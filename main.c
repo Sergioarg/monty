@@ -49,18 +49,16 @@ int main(int argc, char const *argv[])
 		if (getline(&current_line, &size_current_line, file_stream) == EOF)
 			break;
 
+		/* Extract data and opcode of each file line */
 		current_token = current_line;
 		current_data = -1;
-		/* Extract data and opcode of each file line */
 		for (i = 0; current_token != NULL; i++)
 		{
 			current_token = strtok(i == 0 ? current_token : NULL, DELIMITER_LINE);
-
 			if (i == 0)
 				current_opcode = current_token;
-			if (i == 1)
+			if (i == 1 && current_token != NULL && is_digit(current_token))
 				current_data = atoi(current_token);
-
 		}
 		if (current_opcode != NULL)
 			get_opcode_handler(current_opcode)(&storage, line_numbers);

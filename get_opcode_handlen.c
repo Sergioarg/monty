@@ -16,7 +16,7 @@ void (*get_opcode_handler(char *opcode))(stack_t **, unsigned int)
 
 	/* Select the function handler of opcode */
 	for (i = 0; instructions[i].opcode != NULL; i++)
-		if (strcmp(opcode, instructions[i].opcode))
+		if (strcmp(opcode, instructions[i].opcode) == 0)
 			return (instructions[i].f);
 	return (handler_nop);
 }

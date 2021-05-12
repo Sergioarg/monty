@@ -70,9 +70,10 @@ typedef struct data_to_handler_s
 
 /* PROTORYPES */
 void (*get_opcode_handler(char *opcode))(stack_t **, unsigned int);
+bool is_number(char *string);
 
 /* PROTORYPES OPCODES HANDLER */
-void handler_push(stack_t **, unsigned int);
+void handler_push(stack_t **, unsigned int line_number);
 void handler_nop(stack_t **stack UNUSED, unsigned int line_number UNUSED);
 
 /* PROTOTYPES STACK METHODS */
