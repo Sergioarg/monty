@@ -1,14 +1,15 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-/* Macros */
+/* MACROS */
 #define true (1)
 #define false (!true)
-
-/* Define data types */
+#define DELIMITER_LINE (" \n	")
+#define UNUSED __attribute__((unused))
+/* DEFINE DATA TYPES */
 typedef unsigned char bool;
 
-/* Standars libs */
+/* STANDARS LIBS */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -20,6 +21,7 @@ typedef unsigned char bool;
 #include <unistd.h>
 #include <unistd.h>
 
+/* STRUCTURES */
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -49,5 +51,35 @@ typedef struct instruction_s
 		char *opcode;
 		void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+/**
+ * struct data_to_handler_s - opcode and its function
+ * @opcode: the opcode
+ * @data: data to handler
+ * @line_number: current number line
+ *
+ * Description: opcode and its function
+ * for stack, queues, LIFO, FIFO Holberton project
+ */
+typedef struct data_to_handler_s
+{
+	char *opcode;
+	int data;
+	unsigned int line_number;
+} data_to_handler_t;
+
+/* PROTORYPES */
+void (*get_opcode_handler(char *opcode))(stack_t **, unsigned int);
+
+/* PROTORYPES OPCODES HANDLER */
+void handler_push(stack_t **, unsigned int);
+void handler_nop(stack_t **stack UNUSED, unsigned int line_number UNUSED);
+
+/* PROTOTYPES STACK METHODS */
+stack_t *add_stack(stack_t **top);
+void free_storage(stack_t *node);
+
+/* GLOBAL VARIABLES */
+extern int current_data;
 
 #endif
