@@ -8,7 +8,6 @@
 void handler_push(stack_t **stack, unsigned int line_number UNUSED)
 {
 	add_stack(stack);
-	printf("Node added successfully");
 }
 
 
