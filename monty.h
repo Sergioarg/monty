@@ -87,4 +87,4 @@ void free_storage(stack_t *node);
 /* GLOBAL VARIABLES */
 extern int current_data;
 
-#endif
+#endif /*MONTY_H*/
