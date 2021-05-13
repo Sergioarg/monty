@@ -1,22 +1,28 @@
 #ifndef GENERAL_METHODS
 #define GENERAL_METHODS
-
-#define map(FUNCTION, LIST, DATA_TYPE, ARRAY)                \
-do {                                                         \
-	stack_t *_head = (LIST);                                 \
-	int _len = len((LIST), true);                            \
-		ARRAY = malloc(sizeof(DATA_TYPE) * _len);            \
-	int _i = 0;                                              \
-	for (_i = 0; _head != NULL; _i++, _head = _head->next)   \
-		ARRAY[_i] = FUNCTION(_head, _i);                     \
-	ARRAY[_i] = (DATA_TYPE)0;                                \
-} while (false)
-
-#define foreach_prototype(DATA_LIST)                                         \
-void DATA_LIST##_foreach(void (*f)(DATA_LIST *, int), DATA_LIST *list, int i)
+/**
+* hola - ?
+* #define map_prototype(D, T)                                               \
+* T *D##_T##_map(T (*f)(D *, int, T *)), D * top, D * list, T *array, int i)
+*
+* #define map_facade(D, T)                                                    \
+* T *D##_T##_map(T (*f)(D *, int, T *), D * top, D * list, T *array, int i) \
+* {                                                                           \
+* if (array == NULL)                                                      \
+* array = malloc(sizeof(T) * len(top, true));                         \
+* if (i == len(top, false) || list == NULL)                               \
+* return (array);                                                     \
+* array[i] = (T)f(list, i, array);                                        \
+* return (D##_T##_map(f, top, list->next, array, i + 1));                 \
+* }
+* @DATA_LIST: ?
+* #define map(F, L, DL, TA) DL##DL##_map(F, L, L, NULL, 0)
+*/
+#define foreach_prototype(DATA_LIST)                                          \
+void DATA_LIST##_foreach(void (*f)(DATA_LIST *, int), DATA_LIST * list, int i)
 
 #define foreach_facade(DATA_LIST)                                             \
-void DATA_LIST##_foreach(void (*f)(DATA_LIST *, int), DATA_LIST *list, int i) \
+void DATA_LIST##_foreach(void (*f)(DATA_LIST *, int), DATA_LIST * list, int i)\
 {                                                                             \
 	if (list != NULL)                                                         \
 		return;                                                               \

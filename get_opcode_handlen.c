@@ -6,7 +6,7 @@
  * @line_number: opcode calls
  * Return: handler_nop
  */
-void (*get_opcode_handler(char *opcode, unsigned int line_number))(OPCODE_ARGS)
+void (*get_opcode_handler(char *opcode, UI_T line_number))(OPCODE_ARGS)
 {
 	int i = 0;
 

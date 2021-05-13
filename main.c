@@ -3,6 +3,7 @@
 global_data_t global_data = {NULL, NULL, -1};
 
 foreach_facade(stack_t)
+/*map_facade(stack_t, char)*/
 
 /**
  * main - Entry point.

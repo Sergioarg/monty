@@ -7,6 +7,7 @@
 #define DELIMITER_LINE (" \n	")
 #define UNUSED __attribute__((unused))
 #define OPCODE_ARGS stack_t **stack, unsigned int line_number
+#define UI_T unsigned int
 #define ERROR_PUSH "L%u: usage: push integer\n"
 #define ERROR_POP "L%u: can't pop an empty stack\n"
 #define ERROR_SWAP "L%u: can't swap, stack too short\n"
@@ -112,6 +113,7 @@ stack_t *add_stack(stack_t **top);
 void free_storage(stack_t *node);
 stack_t *pop_stack(stack_t **top);
 foreach_prototype(stack_t);
+/*map_prototype(stack_t, char);*/
 /* GLOBAL VARIABLES */
 extern global_data_t global_data;
 
