@@ -6,7 +6,14 @@
 #define false (!true)
 #define DELIMITER_LINE (" \n	")
 #define UNUSED __attribute__((unused))
-#define ERROR_PUSH "L%d: usage: push integer\n"
+#define ERROR_PUSH "L%u: usage: push integer\n"
+#define ERROR_POP "L%u: can't pop an empty stack\n"
+#define ERROR_SWAP "L%u: can't swap, stack too short\n"
+#define ERROR_ADD "L%u: can't add, stack too short\n"
+#define ERROR_SUB "L%u: can't sub, stack too short\n"
+#define ERROR_DIV "L%u: can't div, stack too short\n"
+#define ERROR_MUL "L%u: can't mul, stack too short\n"
+#define ERROR_SHORT(TYPE) "L%u: can't "#TYPE", stack too short\n"
 #define ERROR_FILE "USAGE: monty file\n"
 #define ERROR_OPEN "Error: Can't open file %s\n"
 /* DEFINE DATA TYPES */
