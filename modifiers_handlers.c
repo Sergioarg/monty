@@ -10,7 +10,7 @@ void handler_push(stack_t **stack, unsigned int line_number)
 {
 	if (global_data.current_data == -1)
 	{
-		fprintf(stderr, ERROR_PUSH, line_number);
+		dprintf(STDERR_FILENO, ERROR_PUSH, line_number);
 		if (stack != NULL)
 			free_data(*stack);
 	}
