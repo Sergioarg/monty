@@ -17,7 +17,6 @@ void handler_push(stack_t **stack, unsigned int line_number)
 	add_stack(stack);
 }
 
-
 /**
  * handler_pop - removes the top element of the stack.
  *
@@ -27,4 +26,21 @@ void handler_push(stack_t **stack, unsigned int line_number)
 void handler_pop(stack_t **stack, unsigned int line_number UNUSED)
 {
 	pop_stack(stack);
+}
+
+/**
+ * handler_swap -  the top two elements of the stack.
+ *
+ * @stack: storage the data.
+ * @UNUSED: current number line of the file reader.
+ */
+void handler_swap(stack_t **stack, unsigned int line_number UNUSED)
+{
+	if (global_data.current_data == -1)
+	{
+		dprintf(STDERR_FILENO, ERROR_SWAP, line_number);
+		if (stack != NULL)
+			free_data(*stack);
+	}
+	swap_stack(stack);
 }

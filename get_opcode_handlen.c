@@ -16,6 +16,7 @@ void (*get_opcode_handler(char *opcode, unsigned int line_number))(OPCODE_ARGS)
 		{"pall", handler_pall},
 		{"pint", handler_pint},
 		{"pop", handler_pop},
+		{"swap", handler_swap},
 		{NULL, NULL}
 	};
 
