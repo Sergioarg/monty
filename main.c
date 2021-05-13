@@ -34,7 +34,7 @@ int main(int argc, char const *argv[])
 		return (EXIT_FAILURE);
 	}
 	/* Travel line number  */
-	for (line_numbers = 0; true; line_numbers++)
+	for (line_numbers = 1; true; line_numbers++)
 	{
 		if (getline(&global_data.current_line, &size_current_line,
 				global_data.file_stream) == EOF)
