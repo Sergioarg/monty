@@ -3,12 +3,10 @@
  * get_opcode_handler - Returns the specified option of option.
  *
  * @opcode: opcode calls
+ * @line_number: opcode calls
  * Return: handler_nop
  */
-void (*get_opcode_handler(
-	char *opcode,
-	unsigned int line_number
-))(stack_t **, unsigned int)
+void (*get_opcode_handler(char *opcode, unsigned int line_number))(OPCODE_ARGS)
 {
 	int i = 0;
 

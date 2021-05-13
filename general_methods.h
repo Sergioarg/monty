@@ -12,13 +12,19 @@ do {                                                         \
 	ARRAY[_i] = (DATA_TYPE)0;                                \
 } while (false)
 
-#define foreach(FUNCTION, LIST, DATA_LIST)                            \
-do {                                                                  \
-	DATA_LIST *_head = (LIST);                                        \
-	int _i = 0;                                                       \
-	for (_head = (LIST); _head != NULL; _head = _head->next, _i++)    \
-		FUNCTION(_head, _i);                                          \
-} while (false)
+#define foreach_prototype(DATA_LIST)                                         \
+void DATA_LIST##_foreach(void (*f)(DATA_LIST *, int), DATA_LIST *list, int i)
+
+#define foreach_facade(DATA_LIST)                                             \
+void DATA_LIST##_foreach(void (*f)(DATA_LIST *, int), DATA_LIST *list, int i) \
+{                                                                             \
+	if (list != NULL)                                                         \
+		return;                                                               \
+	f(list, i);                                                               \
+	DATA_LIST##_foreach(f, list->next, i + 1);                                \
+}
+
+#define foreach(F, L, DL) DL##_foreach(F, L, 0)
 
 #define free_data(LIST)              \
 do {                                 \

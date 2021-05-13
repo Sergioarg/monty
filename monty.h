@@ -6,6 +6,7 @@
 #define false (!true)
 #define DELIMITER_LINE (" \n	")
 #define UNUSED __attribute__((unused))
+#define OPCODE_ARGS stack_t **stack, unsigned int line_number
 #define ERROR_PUSH "L%u: usage: push integer\n"
 #define ERROR_POP "L%u: can't pop an empty stack\n"
 #define ERROR_SWAP "L%u: can't swap, stack too short\n"
@@ -100,17 +101,17 @@ int len(stack_t *node, bool count_null);
 void extract_token_line(char *current_line, char **current_opcode);
 
 /* PROTORYPES OPCODES HANDLER */
-void handler_push(stack_t **, unsigned int line_number);
+void handler_push(OPCODE_ARGS);
 void handler_nop(stack_t **stack UNUSED, unsigned int line_number UNUSED);
-void handler_pall(stack_t **stack, unsigned int line_number UNUSED);
-void handler_pint(stack_t **stack, unsigned int line_number UNUSED);
-void handler_pop(stack_t **stack, unsigned int line_number UNUSED);
+void handler_pall(OPCODE_ARGS UNUSED);
+void handler_pint(OPCODE_ARGS UNUSED);
+void handler_pop(OPCODE_ARGS UNUSED);
 
 /* PROTOTYPES STACK METHODS */
 stack_t *add_stack(stack_t **top);
 void free_storage(stack_t *node);
 stack_t *pop_stack(stack_t **top);
-
+foreach_prototype(stack_t);
 /* GLOBAL VARIABLES */
 extern global_data_t global_data;
 
