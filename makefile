@@ -25,3 +25,8 @@ gdb-c:
 	@gcc -g -Wall -Werror -Wextra -pedantic *.c -o monty
 	@gdb ./monty; rm -f monty
 
+file="bytecodes/00.m"
+utest:
+	@gcc -Wall -Werror -Wextra -pedantic *.c -o monty
+	@echo "Test -> $(file)"
+	@./monty $(file)

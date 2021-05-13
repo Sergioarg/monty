@@ -120,7 +120,7 @@ void handler_nop(stack_t **stack UNUSED, unsigned int line_number UNUSED);
 void handler_pall(OPCODE_ARGS UNUSED);
 void handler_pint(OPCODE_ARGS UNUSED);
 void handler_pop(OPCODE_ARGS UNUSED);
-void handler_swap(OPCODE_ARGS UNUSED);
+void handler_swap(OPCODE_ARGS);
 
 /* -------------------------- */
 /* PROTOTYPES STACK METHODS */
