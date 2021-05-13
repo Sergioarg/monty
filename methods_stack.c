@@ -30,8 +30,6 @@ stack_t *add_stack(stack_t **top)
 	return (*top);
 }
 
-/* Eliminar el primer elemento de una lista doblemante enlazada */
-
 /**
 * pop_stack - adds a new node at the beginning of a stack_t list.
 *
@@ -55,3 +53,28 @@ stack_t *pop_stack(stack_t **top)
 	return (*top);
 }
 
+/**
+* swap_stack -  the top two elements of the stack.
+*
+* @top: top of the list.
+* Return: new top.
+*/
+stack_t *swap_stack(stack_t **top)
+{
+	int to_swap;
+
+	if (top == NULL || *top == NULL)
+		return (NULL);
+
+	/* FREE TOP */
+	if (*top != NULL)
+	{
+		free((*top)->prev);
+		(*top)->prev = NULL;
+	}
+	to_swap = (*top)->next->n;
+	(*top)->n = (*top)->next->n;
+	(*top)->next->n = to_swap;
+
+	return (*top);
+}

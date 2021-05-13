@@ -1,7 +1,9 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+/* ------ */
 /* MACROS */
+/* ------ */
 #define true (1)
 #define false (!true)
 #define DELIMITER_LINE (" \n	")
@@ -19,10 +21,15 @@
 #define ERROR_SHORT(TYPE) "L%u: can't "#TYPE", stack too short\n"
 #define ERROR_FILE "USAGE: monty file\n"
 #define ERROR_OPEN "Error: Can't open file %s\n"
+
+/* ----------------- */
 /* DEFINE DATA TYPES */
+/* ----------------- */
 typedef unsigned char bool;
 
+/* ------------- */
 /* STANDARS LIBS */
+/* ------------- */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -30,7 +37,9 @@ typedef unsigned char bool;
 #include <unistd.h>
 #include "general_methods.h"
 
+/* ---------- */
 /* STRUCTURES */
+/* ---------- */
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -92,7 +101,9 @@ typedef struct global_data
 	int current_data;
 } global_data_t;
 
+/* --------------------- */
 /* PROTORYPES */
+/* -------------------- */
 void (*get_opcode_handler(
 	char *opcode,
 	unsigned int line_number
@@ -101,20 +112,30 @@ bool is_number(char *string);
 int len(stack_t *node, bool count_null);
 void extract_token_line(char *current_line, char **current_opcode);
 
+/* -------------------------- */
 /* PROTORYPES OPCODES HANDLER */
+/* -------------------------- */
 void handler_push(OPCODE_ARGS);
 void handler_nop(stack_t **stack UNUSED, unsigned int line_number UNUSED);
 void handler_pall(OPCODE_ARGS UNUSED);
 void handler_pint(OPCODE_ARGS UNUSED);
 void handler_pop(OPCODE_ARGS UNUSED);
+void handler_swap(OPCODE_ARGS UNUSED);
 
+/* -------------------------- */
 /* PROTOTYPES STACK METHODS */
+/* -------------------------- */
 stack_t *add_stack(stack_t **top);
 void free_storage(stack_t *node);
 stack_t *pop_stack(stack_t **top);
+stack_t *swap_stack(stack_t **top);
 foreach_prototype(stack_t);
 /*map_prototype(stack_t, char);*/
 /* GLOBAL VARIABLES */
+
+/* -------------------------- */
+/*      GLOBAL VARIABLES      */
+/* -------------------------- */
 extern global_data_t global_data;
 
 #endif /*MONTY_H*/
