@@ -13,6 +13,7 @@ void (*get_opcode_handler(char *opcode))(stack_t **, unsigned int)
 		{"push", handler_push},
 		{"pall", handler_pall},
 		{"pint", handler_pint},
+		{"pop", handler_pop},
 		{NULL, NULL}
 	};
 

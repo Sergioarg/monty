@@ -94,10 +94,12 @@ void handler_push(stack_t **, unsigned int line_number);
 void handler_nop(stack_t **stack UNUSED, unsigned int line_number UNUSED);
 void handler_pall(stack_t **stack, unsigned int line_number UNUSED);
 void handler_pint(stack_t **stack, unsigned int line_number UNUSED);
+void handler_pop(stack_t **stack, unsigned int line_number UNUSED);
 
 /* PROTOTYPES STACK METHODS */
 stack_t *add_stack(stack_t **top);
 void free_storage(stack_t *node);
+stack_t *pop_stack(stack_t **top);
 
 /* GLOBAL VARIABLES */
 extern global_data_t global_data;
