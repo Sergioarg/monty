@@ -23,12 +23,7 @@ typedef unsigned char bool;
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <fcntl.h>
-#include <stdarg.h>
-#include <errno.h>
-#include <unistd.h>
 #include <unistd.h>
 #include "general_methods.h"
 
