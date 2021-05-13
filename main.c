@@ -41,7 +41,8 @@ int main(int argc, char const *argv[])
 			break;
 		extract_token_line(global_data.current_line, &current_opcode);
 		if (current_opcode != NULL)
-			get_opcode_handler(current_opcode)(&storage, line_numbers);
+			get_opcode_handler(current_opcode, line_numbers)
+				(&storage, line_numbers);
 	}
 	free_data(storage);
 	return (EXIT_SUCCESS);

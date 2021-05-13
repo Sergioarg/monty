@@ -13,6 +13,7 @@
 #define ERROR_SUB "L%u: can't sub, stack too short\n"
 #define ERROR_DIV "L%u: can't div, stack too short\n"
 #define ERROR_MUL "L%u: can't mul, stack too short\n"
+#define ERROR_UKNOWN "L%u: unknown instruction %s\n"
 #define ERROR_SHORT(TYPE) "L%u: can't "#TYPE", stack too short\n"
 #define ERROR_FILE "USAGE: monty file\n"
 #define ERROR_OPEN "Error: Can't open file %s\n"
@@ -90,7 +91,10 @@ typedef struct global_data
 } global_data_t;
 
 /* PROTORYPES */
-void (*get_opcode_handler(char *opcode))(stack_t **, unsigned int);
+void (*get_opcode_handler(
+	char *opcode,
+	unsigned int line_number
+))(stack_t **, unsigned int);
 bool is_number(char *string);
 int len(stack_t *node, bool count_null);
 void extract_token_line(char *current_line, char **current_opcode);
