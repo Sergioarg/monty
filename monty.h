@@ -93,6 +93,7 @@ void extract_token_line(char *current_line, char **current_opcode);
 void handler_push(stack_t **, unsigned int line_number);
 void handler_nop(stack_t **stack UNUSED, unsigned int line_number UNUSED);
 void handler_pall(stack_t **stack, unsigned int line_number UNUSED);
+void handler_pint(stack_t **stack, unsigned int line_number UNUSED);
 
 /* PROTOTYPES STACK METHODS */
 stack_t *add_stack(stack_t **top);
