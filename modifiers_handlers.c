@@ -10,7 +10,7 @@ void handler_push(stack_t **stack, unsigned int line_number)
 {
 	if (global_data.current_data == -1)
 	{
-		fprintf(stderr, "L%i: usage: push integer\n", line_number);
+		fprintf(stderr, ERROR_PUSH, line_number);
 		if (stack != NULL)
 			free_data(*stack);
 	}

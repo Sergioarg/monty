@@ -21,8 +21,8 @@ int main(int argc, char const *argv[])
 	/* Validation of quantity of arguments */
 	if (argc != 2)
 	{
-		fprintf(stderr, "USAGE: monty file\n");
-		return (EXIT_FAILURE);
+		fprintf(stderr, ERROR_FILE);
+		exit(EXIT_FAILURE);
 	}
 
 	name_file = argv[1];
@@ -30,8 +30,8 @@ int main(int argc, char const *argv[])
 	global_data.file_stream = fopen(name_file, "r");
 	if (global_data.file_stream == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", name_file);
-		return (EXIT_FAILURE);
+		fprintf(stderr, ERROR_OPEN, name_file);
+		exit(EXIT_FAILURE);
 	}
 	/* Travel line number  */
 	for (line_numbers = 1; true; line_numbers++)
