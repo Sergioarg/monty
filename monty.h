@@ -69,6 +69,19 @@ typedef struct data_to_handler_s
 	unsigned int line_number;
 } data_to_handler_t;
 
+/**
+ * struct global_data_s - global data
+ * @file_stream: the opcode
+ * @current_data: data to handler
+ *
+ * Description: global data
+ */
+typedef struct global_data
+{
+	FILE *file_stream;
+	int current_data;
+} global_data_t;
+
 /* PROTORYPES */
 void (*get_opcode_handler(char *opcode))(stack_t **, unsigned int);
 bool is_number(char *string);
@@ -85,6 +98,6 @@ stack_t *add_stack(stack_t **top);
 void free_storage(stack_t *node);
 
 /* GLOBAL VARIABLES */
-extern int current_data;
+extern global_data_t global_data;
 
 #endif /*MONTY_H*/

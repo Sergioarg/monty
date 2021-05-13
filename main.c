@@ -1,6 +1,8 @@
 #include "monty.h"
 
-int current_data = -1;
+global_data_t global_data = {NULL, -1};
+
+
 /**
  * main - Entry point.
  *
@@ -14,7 +16,6 @@ int main(int argc, char const *argv[])
 	const char *name_file = NULL;
 	char *current_line = NULL, *current_opcode = NULL;
 	stack_t *storage = NULL;
-	FILE *file_stream = NULL;
 	size_t size_current_line = 0, line_numbers = 0;
 
 	/* Validation of quantity of arguments */
@@ -32,17 +33,17 @@ int main(int argc, char const *argv[])
 		return (EXIT_FAILURE);
 	}
 	/* Open the file */
-	file_stream = fopen(name_file, "r");
-	if (file_stream == NULL)
+	global_data.file_stream = fopen(name_file, "r");
+	if (global_data.file_stream == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", name_file);
 		return (EXIT_FAILURE);
 	}
-
 	/* Travel line number  */
 	for (line_numbers = 0; true; line_numbers++)
 	{
-		if (getline(&current_line, &size_current_line, file_stream) == EOF)
+		if (getline(&current_line,&size_current_line,
+				global_data.file_stream) == EOF)
 			break;
 		extract_token_line(current_line, &current_opcode);
 		if (current_opcode != NULL)

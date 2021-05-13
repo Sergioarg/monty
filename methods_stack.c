@@ -20,7 +20,7 @@ stack_t *add_stack(stack_t **top)
 
 	new_top->prev = NULL;
 	new_top->next = *top;
-	new_top->n = current_data;
+	new_top->n = global_data.current_data;
 
 	if (*top != NULL)
 		(*top)->prev = new_top;
