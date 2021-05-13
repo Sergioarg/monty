@@ -27,7 +27,7 @@ stack_t *add_stack(stack_t **top)
 
 	*top = new_top;
 
-	return (new_top);
+	return (*top);
 }
 
 /* Eliminar el primer elemento de una lista doblemante enlazada */

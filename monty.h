@@ -20,6 +20,7 @@ typedef unsigned char bool;
 #include <errno.h>
 #include <unistd.h>
 #include <unistd.h>
+#include "general_methods.h"
 
 /* STRUCTURES */
 /**
@@ -71,10 +72,13 @@ typedef struct data_to_handler_s
 /* PROTORYPES */
 void (*get_opcode_handler(char *opcode))(stack_t **, unsigned int);
 bool is_number(char *string);
+int len(stack_t *node, bool count_null);
+void extract_token_line(char *current_line, char **current_opcode);
 
 /* PROTORYPES OPCODES HANDLER */
 void handler_push(stack_t **, unsigned int line_number);
 void handler_nop(stack_t **stack UNUSED, unsigned int line_number UNUSED);
+void handler_pall(stack_t **stack, unsigned int line_number UNUSED);
 
 /* PROTOTYPES STACK METHODS */
 stack_t *add_stack(stack_t **top);

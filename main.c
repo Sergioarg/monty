@@ -12,14 +12,10 @@ int main(int argc, char const *argv[])
 {
 	/* Vars */
 	const char *name_file = NULL;
-	char *current_line = NULL;
-	/* char *read_file = NULL; */
+	char *current_line = NULL, *current_opcode = NULL;
 	stack_t *storage = NULL;
 	FILE *file_stream = NULL;
-	size_t size_current_line = 0;
-	unsigned int line_numbers = 0, i = 0;
-	char *current_token = NULL;
-	char *current_opcode = NULL;
+	size_t size_current_line = 0, line_numbers = 0;
 
 	/* Validation of quantity of arguments */
 	if (argc != 2)
@@ -48,18 +44,7 @@ int main(int argc, char const *argv[])
 	{
 		if (getline(&current_line, &size_current_line, file_stream) == EOF)
 			break;
-
-		/* Extract data and opcode of each file line */
-		current_token = current_line;
-		current_data = -1;
-		for (i = 0; current_token != NULL; i++)
-		{
-			current_token = strtok(i == 0 ? current_token : NULL, DELIMITER_LINE);
-			if (i == 0)
-				current_opcode = current_token;
-			if (i == 1 && current_token != NULL && is_digit(current_token))
-				current_data = atoi(current_token);
-		}
+		extract_token_line(current_line, &current_opcode);
 		if (current_opcode != NULL)
 			get_opcode_handler(current_opcode)(&storage, line_numbers);
 	}

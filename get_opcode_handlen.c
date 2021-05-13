@@ -11,6 +11,7 @@ void (*get_opcode_handler(char *opcode))(stack_t **, unsigned int)
 
 	instruction_t instructions[] = {
 		{"push", handler_push},
+		{"pall", handler_pall},
 		{NULL, NULL}
 	};
 
