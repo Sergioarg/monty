@@ -6,9 +6,9 @@
 #define false (!true)
 #define DELIMITER_LINE (" \n	")
 #define UNUSED __attribute__((unused))
-#define ERROR_PUSH ("L<line_number>: usage: push integer\n")
-#define ERROR_FILE ("USAGE: monty file\n")
-#define ERROR_OPEN ("Error: Can't open file %s\n")
+#define ERROR_PUSH "L%d: usage: push integer\n"
+#define ERROR_FILE "USAGE: monty file\n"
+#define ERROR_OPEN "Error: Can't open file %s\n"
 /* DEFINE DATA TYPES */
 typedef unsigned char bool;
 
