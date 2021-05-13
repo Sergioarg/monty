@@ -22,3 +22,5 @@ bool is_number(char *string)
 
 	return (false);
 }
+
+

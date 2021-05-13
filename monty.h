@@ -79,6 +79,7 @@ typedef struct data_to_handler_s
 typedef struct global_data
 {
 	FILE *file_stream;
+	char *current_line;
 	int current_data;
 } global_data_t;
 

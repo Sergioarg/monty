@@ -4,8 +4,9 @@
  * print - print any node.
  *
  * @node: node of storage.
+ * @UNUSED: index of node.
  */
-void print(stack_t *node)
+void print(stack_t *node, int i UNUSED)
 {
 	printf("%i\n", node->n);
 }

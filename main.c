@@ -1,6 +1,6 @@
 #include "monty.h"
 
-global_data_t global_data = {NULL, -1};
+global_data_t global_data = {NULL, NULL, -1};
 
 
 /**
@@ -14,7 +14,7 @@ int main(int argc, char const *argv[])
 {
 	/* Vars */
 	const char *name_file = NULL;
-	char *current_line = NULL, *current_opcode = NULL;
+	char *current_opcode = NULL;
 	stack_t *storage = NULL;
 	size_t size_current_line = 0, line_numbers = 0;
 
@@ -26,12 +26,6 @@ int main(int argc, char const *argv[])
 	}
 
 	name_file = argv[1];
-	/* Validate be able to read the file */
-	if (access(name_file, R_OK) == -1)
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", name_file);
-		return (EXIT_FAILURE);
-	}
 	/* Open the file */
 	global_data.file_stream = fopen(name_file, "r");
 	if (global_data.file_stream == NULL)
@@ -42,12 +36,13 @@ int main(int argc, char const *argv[])
 	/* Travel line number  */
 	for (line_numbers = 0; true; line_numbers++)
 	{
-		if (getline(&current_line,&size_current_line,
+		if (getline(&global_data.current_line, &size_current_line,
 				global_data.file_stream) == EOF)
 			break;
-		extract_token_line(current_line, &current_opcode);
+		extract_token_line(global_data.current_line, &current_opcode);
 		if (current_opcode != NULL)
 			get_opcode_handler(current_opcode)(&storage, line_numbers);
 	}
+	free_data(storage);
 	return (EXIT_SUCCESS);
 }
