@@ -19,7 +19,7 @@ void handler_push(stack_t **stack, unsigned int line_number)
 
 
 /**
- * handler_push - add to torage a value.
+ * handler_pop - removes the top element of the stack.
  *
  * @stack: storage the data.
  * @UNUSED: current number line of the file reader.

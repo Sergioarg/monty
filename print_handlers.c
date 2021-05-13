@@ -23,7 +23,7 @@ void handler_pall(stack_t **stack, unsigned int line_number UNUSED)
 }
 
 /**
- * handler_pall - print all values of list storage.
+ * handler_pint - prints the value at the top of the stack.
  *
  * @stack: storage the data.
  * @UNUSED: current number line of the file reader.

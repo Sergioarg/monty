@@ -70,8 +70,9 @@ typedef struct data_to_handler_s
 } data_to_handler_t;
 
 /**
- * struct global_data_s - global data
+ * struct global_data - global data
  * @file_stream: the opcode
+ * @current_line: line to handler
  * @current_data: data to handler
  *
  * Description: global data
