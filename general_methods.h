@@ -24,7 +24,7 @@ void DATA_LIST##_foreach(void (*f)(DATA_LIST *, int), DATA_LIST * list, int i)
 #define foreach_facade(DATA_LIST)                                             \
 void DATA_LIST##_foreach(void (*f)(DATA_LIST *, int), DATA_LIST * list, int i)\
 {                                                                             \
-	if (list != NULL)                                                         \
+	if (list == NULL)                                                         \
 		return;                                                               \
 	f(list, i);                                                               \
 	DATA_LIST##_foreach(f, list->next, i + 1);                                \
