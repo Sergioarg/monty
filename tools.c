@@ -20,6 +20,8 @@ bool is_number(char *string)
 	if (*string >= '0' && *string <= '9')
 		return (is_number(string + 1));
 
+	if (*string == '-')
+		return (is_number(string + 1));
 	return (false);
 }
 
