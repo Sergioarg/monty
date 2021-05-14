@@ -20,7 +20,7 @@ void (*get_opcode_handler(char *opcode, UI_T line_number))(OPCODE_ARGS)
 		{"add", handler_add},
 		{"sub", handler_sub},
 		{"mul", handler_mul},
-		{"div", handler_div},
+		{"div", handler_divs},
 		{"mod", handler_mod},
 		{NULL, NULL}
 	};
