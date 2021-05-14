@@ -85,7 +85,7 @@ If the expected is not found The code sould be `[NO_REF]`
 ### Run with args
 If you run the command with a `<monty-file>` as argument
 the script will search this file in the bytecode folder
-and show 
+and show
  - `ARGS` in the first line
  - The file name and the test code in the second line
  - A horizonal line
@@ -109,4 +109,3 @@ ARGS
 1
 ------------------
 ```
-

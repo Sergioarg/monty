@@ -133,7 +133,7 @@ void handler_mul(OPCODE_ARGS);
 void handler_mod(OPCODE_ARGS);
 
 /* -------------------------- */
-/* PROTOTYPES STACK METHODS */
+/* PROTOTYPES STACK METHODS   */
 /* -------------------------- */
 stack_t *add_stack(stack_t **top);
 void free_storage(stack_t *node);
