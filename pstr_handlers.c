@@ -21,9 +21,7 @@ void print_all(stack_t *node, int i UNUSED)
 			return;
 		node_copy = node_copy->prev;
 	}
-	if (node->n == 0)
-		printf("\n");
-	else if (node->n > 255 || node->n < 32)
+	if (node->next == NULL)
 		printf("\n");
 	else if (node->n <= 255 && node->n >= 32)
 		printf("%c", node->n);
