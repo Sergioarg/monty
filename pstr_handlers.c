@@ -39,7 +39,7 @@ void print_all(stack_t *node, int i UNUSED)
  */
 void handler_pstr(stack_t **stack, unsigned int line_number UNUSED)
 {
-	if (stack_empy(*stack))
+	if (stack == NULL || stack_empy(*stack))
 	{
 		printf("\n");
 		return;
