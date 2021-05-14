@@ -41,4 +41,31 @@ do {                                 \
 	exit(EXIT_SUCCESS);              \
 } while (false)
 
+#define maths_handler(METHOD, ERROR)                           \
+void handler_##METHOD(stack_t **stack, unsigned int line_number) \
+{                                                              \
+	if (len(*stack, false) < 2)                                \
+	{                                                          \
+		fprintf(stderr, ERROR, line_number);                   \
+		if (stack != NULL)                                     \
+			free_data(*stack);                                 \
+	}                                                          \
+	METHOD##_last_stack(stack);                                \
+}
+
+#define maths_methods(OP, METHOD)           \
+stack_t *METHOD##_last_stack(stack_t **top) \
+{                                           \
+	if (top == NULL || *top == NULL)        \
+		return (NULL);                      \
+	*top = (*top)->next;                    \
+	if (*top != NULL)                       \
+	{                                       \
+		(*top)->n OP(*top)->prev->n;    \
+		free((*top)->prev);                 \
+		(*top)->prev = NULL;                \
+	}                                       \
+	return (*top);                          \
+}
+
 #endif /*GENERAL_METHODS*/

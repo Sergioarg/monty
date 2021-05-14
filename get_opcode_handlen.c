@@ -17,6 +17,11 @@ void (*get_opcode_handler(char *opcode, UI_T line_number))(OPCODE_ARGS)
 		{"pint", handler_pint},
 		{"pop", handler_pop},
 		{"swap", handler_swap},
+		{"add", handler_add},
+		{"sub", handler_sub},
+		{"mul", handler_mul},
+		{"div", handler_div},
+		{"mod", handler_mod},
 		{NULL, NULL}
 	};
 

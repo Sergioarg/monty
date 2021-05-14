@@ -4,7 +4,7 @@ build:
 	@echo "Buliding..."
 
 run:
-	@gcc -Wall -Werror -Wextra -pedantic *.c -o monty
+	@gcc -g -Wall -Werror -Wextra -pedantic *.c -o monty
 	@echo "Runing..."
 	@./monty test; rm -f monty
 

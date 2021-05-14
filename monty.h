@@ -17,6 +17,7 @@
 #define ERROR_SUB "L%u: can't sub, stack too short\n"
 #define ERROR_DIV "L%u: can't div, stack too short\n"
 #define ERROR_MUL "L%u: can't mul, stack too short\n"
+#define ERROR_MOD "L%u: can't mod, stack too short\n"
 #define ERROR_UKNOWN "L%u: unknown instruction %s\n"
 #define ERROR_SHORT(TYPE) "L%u: can't "#TYPE", stack too short\n"
 #define ERROR_FILE "USAGE: monty file\n"
@@ -121,6 +122,11 @@ void handler_pall(OPCODE_ARGS UNUSED);
 void handler_pint(OPCODE_ARGS UNUSED);
 void handler_pop(OPCODE_ARGS UNUSED);
 void handler_swap(OPCODE_ARGS);
+void handler_add(OPCODE_ARGS);
+void handler_sub(OPCODE_ARGS);
+void handler_div(OPCODE_ARGS);
+void handler_mul(OPCODE_ARGS);
+void handler_mod(OPCODE_ARGS);
 
 /* -------------------------- */
 /* PROTOTYPES STACK METHODS */
@@ -130,6 +136,11 @@ void free_storage(stack_t *node);
 stack_t *pop_stack(stack_t **top);
 stack_t *swap_stack(stack_t **top);
 foreach_prototype(stack_t);
+stack_t *add_last_stack(stack_t **top);
+stack_t *sub_last_stack(stack_t **top);
+stack_t *mul_last_stack(stack_t **top);
+stack_t *div_last_stack(stack_t **top);
+stack_t *mod_last_stack(stack_t **top);
 /*map_prototype(stack_t, char);*/
 /* GLOBAL VARIABLES */
 
