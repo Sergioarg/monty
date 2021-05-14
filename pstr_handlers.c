@@ -5,30 +5,23 @@
  *
  * @node: node of storage.
  * @UNUSED: index of node.
+ * Return: true if continue for each
  */
-void print_all(stack_t *node, int i UNUSED)
+bool print_all(stack_t *node, int i UNUSED)
 {
-	stack_t *node_copy = NULL;
-
 	if (node == NULL)
-		return;
-	node_copy = node->prev;
-	while (node_copy != NULL)
+		return (false);
+	if ((node->n == 0)
+		|| (node->n < 32 || node->n > 255)
+		|| (node->next == NULL)
+	)
 	{
-		if (node_copy->n == 0)
-			return;
-		if (node_copy->n > 255 || node_copy->n < 32)
-			return;
-		node_copy = node_copy->prev;
+		printf("\n");
+		return (false);
 	}
-	if (node->n == 0)
-		printf("\n");
-	else if (node->n > 255 || node->n < 32)
-		printf("\n");
-	else if (node->next == NULL)
-		printf("\n");
-	else if (node->n <= 255 && node->n >= 32)
-		printf("%c", node->n);
+
+	printf("%c", node->n);
+	return (true);
 }
 
 /**
@@ -39,7 +32,7 @@ void print_all(stack_t *node, int i UNUSED)
  */
 void handler_pstr(stack_t **stack, unsigned int line_number UNUSED)
 {
-	if (stack == NULL || stack_empy(*stack))
+	if (stack == NULL || stack_empty(*stack))
 	{
 		printf("\n");
 		return;

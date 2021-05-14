@@ -45,6 +45,9 @@ int main(int argc, char const *argv[])
 			get_opcode_handler(current_opcode, line_numbers)
 				(&storage, line_numbers);
 	}
-	free_data(storage);
+	if (storage != NULL)
+		free_storage(storage);
+	free(global_data.current_line);
+	fclose(global_data.file_stream);
 	return (EXIT_SUCCESS);
 }
