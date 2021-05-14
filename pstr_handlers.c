@@ -46,4 +46,3 @@ void handler_pstr(stack_t **stack, unsigned int line_number UNUSED)
 	}
 	foreach(print_all, *stack, stack_t);
 }
-
