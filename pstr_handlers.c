@@ -34,8 +34,10 @@ void print_all(stack_t *node, int i UNUSED)
 void handler_pstr(stack_t **stack, unsigned int line_number UNUSED)
 {
 	if (stack_empy(*stack))
+	{
 		printf("\n");
-	if (*stack != NULL || *stack != NULL)
-		foreach(print_one, *stack, stack_t);
+		return;
+	}
+	foreach(print_all, *stack, stack_t);
 }
 
