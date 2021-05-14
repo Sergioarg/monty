@@ -18,12 +18,17 @@ maths_handler(mod, ERROR_MOD)
 /* CALLS MATHS HANDLERS  */
 /* --------------------- */
 /* 1. Opcode to metod add */
-maths_methods(+=, add)
+maths_methods(
+	+=, add)
 /* 2. Opcode to sub */
-maths_methods(-=, sub)
+maths_methods(
+	-=, sub)
 /* 3. Opcode to sub */
-maths_methods(*=, mul)
+maths_methods(
+	*=, mul)
 /* 4. Opcode to div */
-maths_methods(/=, divs)
+maths_methods(
+	/=, divs)
 /* 5. Opcode to mod */
-maths_methods(%=, mod)
+maths_methods(
+	%=, mod)
