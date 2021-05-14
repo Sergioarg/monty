@@ -24,6 +24,11 @@ void handler_push(stack_t **stack, unsigned int line_number)
  */
 void handler_pop(stack_t **stack, unsigned int line_number UNUSED)
 {
+	if (stack == NULL || *stack == NULL)
+	{
+		dprintf(STDERR_FILENO, ERROR_POP, line_number);
+		free_data(stack);
+	}
 	pop_stack(stack);
 }
 
@@ -35,7 +40,7 @@ void handler_pop(stack_t **stack, unsigned int line_number UNUSED)
  */
 void handler_swap(stack_t **stack, unsigned int line_number UNUSED)
 {
-	if (*stack == NULL || (*stack)->next == NULL)
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
 		dprintf(STDERR_FILENO, ERROR_SWAP, line_number);
 		free_data(stack);
