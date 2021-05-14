@@ -24,6 +24,8 @@
 #define ERROR_FILE "USAGE: monty file\n"
 #define ERROR_OPEN "Error: Can't open file %s\n"
 #define ERROR_ZERO "L%u: division by zero\n"
+#define ERROR_PCHARE "L%u: can't pchar, stack empty\n"
+#define ERROR_PCHARR "L%u: can't pchar, value out of range\n"
 /* ----------------- */
 /* DEFINE DATA TYPES */
 /* ----------------- */
@@ -144,6 +146,8 @@ stack_t *mul_last_stack(stack_t **top);
 stack_t *divs_last_stack(stack_t **top);
 stack_t *mod_last_stack(stack_t **top);
 int stack_empy(stack_t *node);
+void handler_pchar(stack_t **stack, unsigned int line_number);
+void print_one(stack_t *node, int i);
 
 /*map_prototype(stack_t, char);*/
 /* GLOBAL VARIABLES */
