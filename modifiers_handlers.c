@@ -36,7 +36,7 @@ void handler_pop(stack_t **stack, unsigned int line_number UNUSED)
  */
 void handler_swap(stack_t **stack, unsigned int line_number UNUSED)
 {
-	if (len(*stack, false) < 2)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		dprintf(STDERR_FILENO, ERROR_SWAP, line_number);
 		if (stack != NULL)

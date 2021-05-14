@@ -69,6 +69,5 @@ stack_t *swap_stack(stack_t **top)
 	to_swap = (*top)->n;
 	(*top)->n = (*top)->next->n;
 	(*top)->next->n = to_swap;
-
 	return (*top);
 }
