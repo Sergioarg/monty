@@ -18,7 +18,11 @@ void extract_token_line(char *current_line, char **current_opcode)
 	{
 		current_token = strtok(i == 0 ? current_token : NULL, DELIMITER_LINE);
 		if (is_comment(current_token))
-			continue;
+		{
+			global_data.current_data = -1;
+			*current_opcode = "nop";
+			break;
+		}
 		if (i == 0)
 			*current_opcode = current_token;
 		if (i == 1 && current_token != NULL && is_number(current_token))

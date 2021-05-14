@@ -8,7 +8,8 @@
  */
 void print(stack_t *node, int i UNUSED)
 {
-	printf("%i\n", node->n);
+	if (node  != NULL)
+		printf("%i\n", node->n);
 }
 
 /**
@@ -19,7 +20,8 @@ void print(stack_t *node, int i UNUSED)
  */
 void handler_pall(stack_t **stack, unsigned int line_number UNUSED)
 {
-	foreach(print, *stack, stack_t);
+	if (*stack != NULL || *stack != NULL)
+		foreach(print, *stack, stack_t);
 }
 
 /**
