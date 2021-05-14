@@ -29,7 +29,7 @@ void (*get_opcode_handler(char *opcode, UI_T line_number))(OPCODE_ARGS)
 	for (i = 0; instructions[i].opcode != NULL; i++)
 		if (strcmp(opcode, instructions[i].opcode) == 0)
 			return (instructions[i].f);
+
 	fprintf(stderr, ERROR_UKNOWN, line_number, opcode);
 	exit(EXIT_FAILURE);
-	return (handler_nop);
 }
