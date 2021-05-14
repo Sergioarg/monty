@@ -39,7 +39,7 @@ do {                                  \
 		free_storage(*LIST);          \
 	free(global_data.current_line);   \
 	fclose(global_data.file_stream);  \
-	exit(EXIT_SUCCESS);               \
+	exit(EXIT_FAILURE);               \
 } while (false)
 
 #define maths_handler(METHOD, ERROR)                                 \
