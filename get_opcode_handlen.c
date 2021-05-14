@@ -23,6 +23,7 @@ void (*get_opcode_handler(char *opcode, UI_T line_number))(OPCODE_ARGS)
 		{"div", handler_divs},
 		{"mod", handler_mod},
 		{"pchar", handler_pchar},
+		{"pstr", handler_pstr},
 		{NULL, NULL}
 	};
 
