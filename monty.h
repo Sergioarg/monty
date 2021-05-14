@@ -103,8 +103,8 @@ typedef struct global_data
 } global_data_t;
 
 /* --------------------- */
-/* PROTORYPES */
-/* -------------------- */
+/*     PROTORYPES        */
+/* --------------------- */
 void (*get_opcode_handler(
 	char *opcode,
 	unsigned int line_number
@@ -112,6 +112,7 @@ void (*get_opcode_handler(
 bool is_number(char *string);
 int len(stack_t *node, bool count_null);
 void extract_token_line(char *current_line, char **current_opcode);
+bool is_comment(char *string);
 
 /* -------------------------- */
 /* PROTORYPES OPCODES HANDLER */
