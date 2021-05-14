@@ -26,3 +26,16 @@ int len(stack_t *node, bool count_null)
 
 	return (1 + len(node->next, count_null));
 }
+/**
+ * stack_empy - validate if the stack is empty.
+ *
+ * @node: node declarate of the DLL.
+ * @return true if the stack is empty.
+ * Return: true if the file is empty.
+ */
+int stack_empy(stack_t *node)
+{
+	if (node != NULL)
+		return (false);
+	return (true);
+}

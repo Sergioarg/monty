@@ -18,6 +18,7 @@
 #define ERROR_DIV "L%u: can't div, stack too short\n"
 #define ERROR_MUL "L%u: can't mul, stack too short\n"
 #define ERROR_UKNOWN "L%u: unknown instruction %s\n"
+#define ERROR_PINT "L%u: can't pint, stack empty\n"
 #define ERROR_SHORT(TYPE) "L%u: can't "#TYPE", stack too short\n"
 #define ERROR_FILE "USAGE: monty file\n"
 #define ERROR_OPEN "Error: Can't open file %s\n"
@@ -130,6 +131,8 @@ void free_storage(stack_t *node);
 stack_t *pop_stack(stack_t **top);
 stack_t *swap_stack(stack_t **top);
 foreach_prototype(stack_t);
+int stack_empy(stack_t *node);
+
 /*map_prototype(stack_t, char);*/
 /* GLOBAL VARIABLES */
 
