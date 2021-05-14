@@ -88,7 +88,6 @@ ll:
 	./test ../bytecodes/p7-div.m
 	./test ../bytecodes/p7-divZero.m
 
-
 #mul
 8:
 	clear;
@@ -114,11 +113,7 @@ ll:
 	clear;
 	gcc $(flags) ../*.c -o test
 	./test ../bytecodes/31.m
-
 01:
 	clear;
 	gcc $(flags) ../*.c -o test
 	./test ../bytecodes/06.m
-
-
-
