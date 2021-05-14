@@ -17,6 +17,8 @@ void print_all(stack_t *node, int i UNUSED)
 	{
 		if (node_copy->n == 0)
 			return;
+		if (node->n > 255 || node->n < 32)
+			return;
 		node_copy = node_copy->prev;
 	}
 	if (node->n == 0)
