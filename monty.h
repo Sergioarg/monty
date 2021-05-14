@@ -145,11 +145,9 @@ stack_t *sub_last_stack(stack_t **top);
 stack_t *mul_last_stack(stack_t **top);
 stack_t *divs_last_stack(stack_t **top);
 stack_t *mod_last_stack(stack_t **top);
-int stack_empy(stack_t *node);
+int stack_empty(stack_t *node);
 void handler_pchar(stack_t **stack, unsigned int line_number);
-void print_one(stack_t *node, int i);
 void handler_pstr(stack_t **stack, unsigned int line_number UNUSED);
-void print_all(stack_t *node, int i UNUSED);
 
 /*map_prototype(stack_t, char);*/
 /* GLOBAL VARIABLES */

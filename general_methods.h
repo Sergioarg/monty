@@ -19,26 +19,27 @@
 * #define map(F, L, DL, TA) DL##DL##_map(F, L, L, NULL, 0)
 */
 #define foreach_prototype(DATA_LIST)                                          \
-void DATA_LIST##_foreach(void (*f)(DATA_LIST *, int), DATA_LIST * list, int i)
+void DATA_LIST##_foreach(bool (*f)(DATA_LIST *, int), DATA_LIST * list, int i)
 
 #define foreach_facade(DATA_LIST)                                             \
-void DATA_LIST##_foreach(void (*f)(DATA_LIST *, int), DATA_LIST * list, int i)\
+void DATA_LIST##_foreach(bool (*f)(DATA_LIST *, int), DATA_LIST * list, int i)\
 {                                                                             \
 	if (list == NULL)                                                         \
 		return;                                                               \
-	f(list, i);                                                               \
+	if (!f(list, i))                                                          \
+		return;                                                               \
 	DATA_LIST##_foreach(f, list->next, i + 1);                                \
 }
 
 #define foreach(F, L, DL) DL##_foreach(F, L, 0)
 
-#define free_data(LIST)              \
-do {                                 \
-	if (LIST != NULL)                \
-		free_storage(LIST);          \
-	free(global_data.current_line);  \
-	fclose(global_data.file_stream); \
-	exit(EXIT_SUCCESS);              \
+#define free_data(LIST)               \
+do {                                  \
+	if (LIST != NULL && *LIST != NULL)\
+		free_storage(*LIST);          \
+	free(global_data.current_line);   \
+	fclose(global_data.file_stream);  \
+	exit(EXIT_FAILURE);               \
 } while (false)
 
 #define maths_handler(METHOD, ERROR)                                 \
@@ -47,8 +48,7 @@ void handler_##METHOD(stack_t **stack, unsigned int line_number)     \
 	if (len(*stack, false) < 2)                                      \
 	{                                                                \
 		fprintf(stderr, ERROR, line_number);                         \
-		if (stack != NULL)                                           \
-			free_data(*stack);                                       \
+		free_data(stack);                                       \
 	}                                                                \
 	if (                                                             \
 		(*stack)->n == 0                                             \
@@ -57,8 +57,7 @@ void handler_##METHOD(stack_t **stack, unsigned int line_number)     \
 		)                                                            \
 	{                                                                \
 		fprintf(stderr, ERROR_ZERO, line_number);                    \
-		if (stack != NULL)                                           \
-			free_data(*stack);                                       \
+		free_data(stack);                                       \
 	}                                                                \
 	METHOD##_last_stack(stack);                                      \
 }

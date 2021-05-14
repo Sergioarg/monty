@@ -4,12 +4,14 @@
  * print_one - print any node.
  *
  * @node: node of storage.
- * @i: index of node.
+ * @UNUSED: index of node.
+ * Return: true if continue for each
  */
-void print_one(stack_t *node, int i)
+bool print_one(stack_t *node, int i UNUSED)
 {
-	if (node  != NULL && i == 0)
+	if (node  != NULL)
 		printf("%c\n", node->n);
+	return (false);
 }
 
 /**
@@ -20,20 +22,17 @@ void print_one(stack_t *node, int i)
  */
 void handler_pchar(stack_t **stack, unsigned int line_number)
 {
-	if (stack_empy(*stack))
+	if (stack == NULL && stack_empty(*stack))
 	{
 		dprintf(STDERR_FILENO, ERROR_PCHARE, line_number);
-		if (stack != NULL)
-			free_data(*stack);
+		free_data(stack);
 	}
-	if ((*stack)->n > 255 || (*stack)->n < 32)
+	if ((*stack)->n > 226 || (*stack)->n < 32)
 	{
 		dprintf(STDERR_FILENO, ERROR_PCHARR, line_number);
-		if (stack != NULL)
-			free_data(*stack);
+		free_data(stack);
 	}
-	if (*stack != NULL || *stack != NULL)
-		foreach(print_one, *stack, stack_t);
+	foreach(print_one, *stack, stack_t);
 }
 
 /**
@@ -41,11 +40,13 @@ void handler_pchar(stack_t **stack, unsigned int line_number)
  *
  * @node: node of storage.
  * @UNUSED: index of node.
+ * Return: true if continue for each
  */
-void print(stack_t *node, int i UNUSED)
+bool print(stack_t *node, int i UNUSED)
 {
 	if (node  != NULL)
 		printf("%i\n", node->n);
+	return (true);
 }
 
 /**
@@ -68,8 +69,11 @@ void handler_pall(stack_t **stack, unsigned int line_number UNUSED)
  */
 void handler_pint(stack_t **stack, unsigned int line_number UNUSED)
 {
-	if (stack_empy(*stack))
+	if (stack == NULL || stack_empty(*stack))
+	{
 		dprintf(STDERR_FILENO, ERROR_PINT, line_number);
+		free_data(stack);
+	}
 
 	printf("%i\n", (*stack)->n);
 }

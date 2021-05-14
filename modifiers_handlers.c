@@ -11,8 +11,7 @@ void handler_push(stack_t **stack, unsigned int line_number)
 	if (global_data.current_data == -1)
 	{
 		dprintf(STDERR_FILENO, ERROR_PUSH, line_number);
-		if (stack != NULL)
-			free_data(*stack);
+		free_data(stack);
 	}
 	add_stack(stack);
 }
@@ -25,6 +24,11 @@ void handler_push(stack_t **stack, unsigned int line_number)
  */
 void handler_pop(stack_t **stack, unsigned int line_number UNUSED)
 {
+	if (stack == NULL || *stack == NULL)
+	{
+		dprintf(STDERR_FILENO, ERROR_POP, line_number);
+		free_data(stack);
+	}
 	pop_stack(stack);
 }
 
@@ -36,11 +40,10 @@ void handler_pop(stack_t **stack, unsigned int line_number UNUSED)
  */
 void handler_swap(stack_t **stack, unsigned int line_number UNUSED)
 {
-	if (*stack == NULL || (*stack)->next == NULL)
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
 		dprintf(STDERR_FILENO, ERROR_SWAP, line_number);
-		if (stack != NULL)
-			free_data(*stack);
+		free_data(stack);
 	}
 	swap_stack(stack);
 }

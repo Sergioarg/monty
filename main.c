@@ -3,7 +3,6 @@
 global_data_t global_data = {NULL, NULL, -1};
 
 foreach_facade(stack_t)
-/*map_facade(stack_t, char)*/
 
 /**
  * main - Entry point.
@@ -46,6 +45,9 @@ int main(int argc, char const *argv[])
 			get_opcode_handler(current_opcode, line_numbers)
 				(&storage, line_numbers);
 	}
-	free_data(storage);
+	if (storage != NULL)
+		free_storage(storage);
+	free(global_data.current_line);
+	fclose(global_data.file_stream);
 	return (EXIT_SUCCESS);
 }
