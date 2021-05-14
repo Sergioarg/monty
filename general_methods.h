@@ -44,15 +44,19 @@ do {                                 \
 #define maths_handler(METHOD, ERROR)                                 \
 void handler_##METHOD(stack_t **stack, unsigned int line_number)     \
 {                                                                    \
-	if (strcmp(#METHOD, "divs") == 0 || strcmp(#METHOD, "mod") == 0) \
-	{                                                                \
-		fprintf(stderr, ERROR_ZERO, line_number);                    \
-		if (stack != NULL)                                           \
-			free_data(*stack);                                       \
-	}                                                                \
 	if (len(*stack, false) < 2)                                      \
 	{                                                                \
 		fprintf(stderr, ERROR, line_number);                         \
+		if (stack != NULL)                                           \
+			free_data(*stack);                                       \
+	}                                                                \
+	if (                                                             \
+		(*stack)->n == 0                                             \
+		&& (strcmp(#METHOD, "divs") == 0                             \
+			|| strcmp(#METHOD, "mod") == 0)                          \
+		)                                                            \
+	{                                                                \
+		fprintf(stderr, ERROR_ZERO, line_number);                    \
 		if (stack != NULL)                                           \
 			free_data(*stack);                                       \
 	}                                                                \
