@@ -30,5 +30,8 @@ void handler_pall(stack_t **stack, unsigned int line_number UNUSED)
  */
 void handler_pint(stack_t **stack, unsigned int line_number UNUSED)
 {
+	if (stack_empy(*stack))
+		dprintf(STDERR_FILENO, ERROR_PINT, line_number);
+
 	printf("%i\n", (*stack)->n);
 }

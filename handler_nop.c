@@ -3,8 +3,11 @@
 /**
  * handler_nop - Doesn’t do anything.
  *
- * @UNUSED: unused parameter.
- * @UNUSED: unused parameter.
+ * @stack: unused parameter.
+ * @line_number: unused parameter.
  */
-void handler_nop(stack_t **stack UNUSED, unsigned int line_number UNUSED)
-{}
+void handler_nop(stack_t **stack, unsigned int line_number)
+{
+	(void)*stack;
+	(void)line_number;
+}

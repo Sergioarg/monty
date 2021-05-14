@@ -19,6 +19,7 @@
 #define ERROR_MUL "L%u: can't mul, stack too short\n"
 #define ERROR_MOD "L%u: can't mod, stack too short\n"
 #define ERROR_UKNOWN "L%u: unknown instruction %s\n"
+#define ERROR_PINT "L%u: can't pint, stack empty\n"
 #define ERROR_SHORT(TYPE) "L%u: can't "#TYPE", stack too short\n"
 #define ERROR_FILE "USAGE: monty file\n"
 #define ERROR_OPEN "Error: Can't open file %s\n"
@@ -103,8 +104,8 @@ typedef struct global_data
 } global_data_t;
 
 /* --------------------- */
-/* PROTORYPES */
-/* -------------------- */
+/*     PROTORYPES        */
+/* --------------------- */
 void (*get_opcode_handler(
 	char *opcode,
 	unsigned int line_number
@@ -112,6 +113,7 @@ void (*get_opcode_handler(
 bool is_number(char *string);
 int len(stack_t *node, bool count_null);
 void extract_token_line(char *current_line, char **current_opcode);
+bool is_comment(char *string);
 
 /* -------------------------- */
 /* PROTORYPES OPCODES HANDLER */
@@ -141,6 +143,8 @@ stack_t *sub_last_stack(stack_t **top);
 stack_t *mul_last_stack(stack_t **top);
 stack_t *div_last_stack(stack_t **top);
 stack_t *mod_last_stack(stack_t **top);
+int stack_empy(stack_t *node);
+
 /*map_prototype(stack_t, char);*/
 /* GLOBAL VARIABLES */
 
