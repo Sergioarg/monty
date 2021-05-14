@@ -23,7 +23,7 @@
 #define ERROR_SHORT(TYPE) "L%u: can't "#TYPE", stack too short\n"
 #define ERROR_FILE "USAGE: monty file\n"
 #define ERROR_OPEN "Error: Can't open file %s\n"
-
+#define ERROR_ZERO "L%u: division by zero\n"
 /* ----------------- */
 /* DEFINE DATA TYPES */
 /* ----------------- */
