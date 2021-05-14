@@ -5,4 +5,5 @@ _Bytecode interpreter of the monty programming language._
 
 #|Directory|Description
 ---|---|---
-1|[README.md](./README.md)| Description.
+D|[README.md](./README.md)| Description.
+1|[general_methods.c](./general_methods.c)| The general methods to be used in the stack.
