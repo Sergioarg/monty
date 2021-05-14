@@ -39,3 +39,15 @@ int stack_empy(stack_t *node)
 		return (false);
 	return (true);
 }
+
+/**
+ * handler_nop - Doesn’t do anything.
+ *
+ * @stack: unused parameter.
+ * @line_number: unused parameter.
+ */
+void handler_nop(stack_t **stack, unsigned int line_number)
+{
+	(void)*stack;
+	(void)line_number;
+}
