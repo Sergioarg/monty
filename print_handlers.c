@@ -27,13 +27,12 @@ void handler_pchar(stack_t **stack, unsigned int line_number)
 		dprintf(STDERR_FILENO, ERROR_PCHARE, line_number);
 		free_data(stack);
 	}
-	if ((*stack)->n > 255 || (*stack)->n < 32)
+	if ((*stack)->n > 226 || (*stack)->n < 32)
 	{
 		dprintf(STDERR_FILENO, ERROR_PCHARR, line_number);
 		free_data(stack);
 	}
-	if (stack != NULL || *stack != NULL)
-		foreach(print_one, *stack, stack_t);
+	foreach(print_one, *stack, stack_t);
 }
 
 /**
