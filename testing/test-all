@@ -70,7 +70,6 @@ function unittest {
 		echo "------------------"
 		printf "\n"
 	fi
-
 }
 
 function multitest {
@@ -82,8 +81,8 @@ function multitest {
 		fi
 
 		unittest $MFILE
-
 	done
+	rm -rf tmp
 }
 
 #RUNNING PROGRAM HERE
