@@ -61,13 +61,10 @@ stack_t *pop_stack(stack_t **top)
 */
 stack_t *swap_stack(stack_t **top)
 {
-	int to_swap = 0;
-
 	if (top == NULL || *top == NULL)
 		return (NULL);
 
-	to_swap = (*top)->n;
-	(*top)->n = (*top)->next->n;
-	(*top)->next->n = to_swap;
+	swap((*top)->n, (*top)->next->n, int);
+
 	return (*top);
 }

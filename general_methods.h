@@ -77,4 +77,12 @@ stack_t *METHOD##_last_stack(stack_t **top) \
 	return (*top);                          \
 }
 
+#define swap(VARIABLE_A, VARIABLE_B, TYPE) \
+{                                          \
+	TYPE _TMP_SWAP = VARIABLE_A;           \
+	VARIABLE_A = VARIABLE_B;               \
+	VARIABLE_B = _TMP_SWAP;                \
+} while(false)                             \
+
+
 #endif /*GENERAL_METHODS*/

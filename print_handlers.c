@@ -22,7 +22,7 @@ bool print_one(stack_t *node, int i UNUSED)
  */
 void handler_pchar(stack_t **stack, unsigned int line_number)
 {
-	if (stack == NULL && stack_empty(*stack))
+	if (stack == NULL || stack_empty(*stack))
 	{
 		dprintf(STDERR_FILENO, ERROR_PCHARE, line_number);
 		free_data(stack);
