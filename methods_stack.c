@@ -38,17 +38,17 @@ stack_t *add_stack(stack_t **top)
 */
 stack_t *pop_stack(stack_t **top)
 {
+	stack_t *will_free;
 
 	if (top == NULL || *top == NULL)
 		return (NULL);
 
+	will_free = *top;
 	*top = (*top)->next;
 
+	free(will_free);
 	if (*top != NULL)
-	{
-		free((*top)->prev);
 		(*top)->prev = NULL;
-	}
 
 	return (*top);
 }

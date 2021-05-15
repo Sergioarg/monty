@@ -17,11 +17,10 @@ bool is_number(char *string)
 		return (true);
 
 	/*validate each character if it's number*/
-	if (*string >= '0' && *string <= '9')
+	if ((*string >= '0' && *string <= '9') || (*string == '-'))
 		return (is_number(string + 1));
 
-	if (*string == '-')
-		return (is_number(string + 1));
+
 	return (false);
 }
 

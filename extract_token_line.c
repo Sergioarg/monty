@@ -13,12 +13,13 @@ void extract_token_line(char *current_line, char **current_opcode)
 	size_t i = 0;
 
 	current_token = current_line;
-	global_data.current_data = -1;
+	global_data.have_current_data = false;
 	for (i = 0; current_token != NULL; i++)
 	{
 		current_token = strtok(i == 0 ? current_token : NULL, DELIMITER_LINE);
 		if (is_comment(current_token))
 		{
+			global_data.have_current_data = false;
 			global_data.current_data = -1;
 			*current_opcode = "nop";
 			break;
@@ -26,6 +27,9 @@ void extract_token_line(char *current_line, char **current_opcode)
 		if (i == 0)
 			*current_opcode = current_token;
 		if (i == 1 && current_token != NULL && is_number(current_token))
+		{
 			global_data.current_data = atoi(current_token);
+			global_data.have_current_data = true;
+		}
 	}
 }

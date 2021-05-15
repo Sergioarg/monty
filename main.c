@@ -1,6 +1,6 @@
 #include "monty.h"
 
-global_data_t global_data = {NULL, NULL, -1};
+global_data_t global_data = {NULL, NULL, -1, false};
 
 foreach_facade(stack_t)
 

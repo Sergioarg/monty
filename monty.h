@@ -95,6 +95,7 @@ typedef struct data_to_handler_s
  * @file_stream: the opcode
  * @current_line: line to handler
  * @current_data: data to handler
+ * @have_current_data: have to handler
  *
  * Description: global data
  */
@@ -103,6 +104,7 @@ typedef struct global_data
 	FILE *file_stream;
 	char *current_line;
 	int current_data;
+	bool have_current_data;
 } global_data_t;
 
 /* --------------------- */

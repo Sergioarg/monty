@@ -8,7 +8,7 @@
  */
 void handler_push(stack_t **stack, unsigned int line_number)
 {
-	if (global_data.current_data == -1)
+	if (global_data.have_current_data == false)
 	{
 		dprintf(STDERR_FILENO, ERROR_PUSH, line_number);
 		free_data(stack);
