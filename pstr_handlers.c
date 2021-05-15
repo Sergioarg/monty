@@ -12,7 +12,7 @@ bool print_all(stack_t *node, int i UNUSED)
 	if (node == NULL)
 		return (false);
 	if ((node->n == 0)
-		|| (node->n < 32 || node->n > 255)
+		|| (node->n < 32 || node->n > 126)
 		|| (node->next == NULL)
 	)
 	{
