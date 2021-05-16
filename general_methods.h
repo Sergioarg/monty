@@ -1,23 +1,6 @@
 #ifndef GENERAL_METHODS
 #define GENERAL_METHODS
-/**
-* hola - ?
-* #define map_prototype(D, T)                                               \
-* T *D##_T##_map(T (*f)(D *, int, T *)), D * top, D * list, T *array, int i)
-*
-* #define map_facade(D, T)                                                    \
-* T *D##_T##_map(T (*f)(D *, int, T *), D * top, D * list, T *array, int i) \
-* {                                                                           \
-* if (array == NULL)                                                      \
-* array = malloc(sizeof(T) * len(top, true));                         \
-* if (i == len(top, false) || list == NULL)                               \
-* return (array);                                                     \
-* array[i] = (T)f(list, i, array);                                        \
-* return (D##_T##_map(f, top, list->next, array, i + 1));                 \
-* }
-* @DATA_LIST: ?
-* #define map(F, L, DL, TA) DL##DL##_map(F, L, L, NULL, 0)
-*/
+
 #define foreach_prototype(DATA_LIST)                                          \
 void DATA_LIST##_foreach(bool (*f)(DATA_LIST *, int), DATA_LIST * list, int i)
 
@@ -31,7 +14,7 @@ void DATA_LIST##_foreach(bool (*f)(DATA_LIST *, int), DATA_LIST * list, int i)\
 	DATA_LIST##_foreach(f, list->next, i + 1);                                \
 }
 
-#define foreach(F, L, DL) DL##_foreach(F, L, 0)
+#define foreach(FUNCTION, LIST, DATA_L) DATA_L##_foreach(FUNCTION, LIST, 0)
 
 #define free_data(LIST)               \
 do {                                  \
@@ -48,7 +31,7 @@ void handler_##METHOD(stack_t **stack, unsigned int line_number)     \
 	if (len(*stack, false) < 2)                                      \
 	{                                                                \
 		fprintf(stderr, ERROR, line_number);                         \
-		free_data(stack);                                       \
+		free_data(stack);                                            \
 	}                                                                \
 	if (                                                             \
 		(*stack)->n == 0                                             \
@@ -57,7 +40,7 @@ void handler_##METHOD(stack_t **stack, unsigned int line_number)     \
 		)                                                            \
 	{                                                                \
 		fprintf(stderr, ERROR_ZERO, line_number);                    \
-		free_data(stack);                                       \
+		free_data(stack);                                            \
 	}                                                                \
 	METHOD##_last_stack(stack);                                      \
 }
@@ -78,11 +61,10 @@ stack_t *METHOD##_last_stack(stack_t **top) \
 }
 
 #define swap(VARIABLE_A, VARIABLE_B, TYPE) \
-{                                          \
+do {                                       \
 	TYPE _TMP_SWAP = VARIABLE_A;           \
 	VARIABLE_A = VARIABLE_B;               \
 	VARIABLE_B = _TMP_SWAP;                \
-} while(false)                             \
-
+} while (false)                            \
 
 #endif /*GENERAL_METHODS*/
