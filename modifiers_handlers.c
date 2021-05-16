@@ -10,7 +10,7 @@ void handler_push(stack_t **stack, unsigned int line_number)
 {
 	if (global_data.have_current_data == false)
 	{
-		dprintf(STDERR_FILENO, ERROR_PUSH, line_number);
+		fprintf(stderr, ERROR_PUSH, line_number);
 		free_data(stack);
 	}
 	add_stack(stack);
@@ -26,7 +26,7 @@ void handler_pop(stack_t **stack, unsigned int line_number UNUSED)
 {
 	if (stack == NULL || *stack == NULL)
 	{
-		dprintf(STDERR_FILENO, ERROR_POP, line_number);
+		fprintf(stderr, ERROR_POP, line_number);
 		free_data(stack);
 	}
 	pop_stack(stack);
@@ -42,8 +42,21 @@ void handler_swap(stack_t **stack, unsigned int line_number UNUSED)
 {
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
-		dprintf(STDERR_FILENO, ERROR_SWAP, line_number);
+		fprintf(stderr, ERROR_SWAP, line_number);
 		free_data(stack);
 	}
 	swap_stack(stack);
 }
+
+/**
+ * handler_rotl -  the top two elements of the stack.
+ *
+ * @stack: storage the data.
+ * @UNUSED: current number line of the file reader.
+ */
+void handler_rotl(stack_t **stack, unsigned int line_number UNUSED)
+{
+	rotl_stack(stack, NULL);
+}
+
+

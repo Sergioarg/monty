@@ -133,6 +133,9 @@ void handler_sub(OPCODE_ARGS);
 void handler_divs(OPCODE_ARGS);
 void handler_mul(OPCODE_ARGS);
 void handler_mod(OPCODE_ARGS);
+void handler_pchar(stack_t **stack, unsigned int line_number);
+void handler_pstr(stack_t **stack, unsigned int line_number UNUSED);
+void handler_rotl(stack_t **stack, unsigned int line_number UNUSED);
 
 /* -------------------------- */
 /* PROTOTYPES STACK METHODS   */
@@ -148,8 +151,7 @@ stack_t *mul_last_stack(stack_t **top);
 stack_t *divs_last_stack(stack_t **top);
 stack_t *mod_last_stack(stack_t **top);
 int stack_empty(stack_t *node);
-void handler_pchar(stack_t **stack, unsigned int line_number);
-void handler_pstr(stack_t **stack, unsigned int line_number UNUSED);
+stack_t *rotl_stack(stack_t **top, stack_t *node);
 
 /*map_prototype(stack_t, char);*/
 /* GLOBAL VARIABLES */

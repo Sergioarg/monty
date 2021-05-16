@@ -68,3 +68,31 @@ stack_t *swap_stack(stack_t **top)
 
 	return (*top);
 }
+
+/**
+* rotl_stack -  the top two elements of the stack.
+*
+* @top: top of the list.
+* @node: top of the list.
+* Return: new top.
+*/
+stack_t *rotl_stack(stack_t **top, stack_t *node)
+{
+	if (top == NULL || *top == NULL)
+		return (NULL);
+	if (node == NULL)
+		node = *top;
+	if (node->next == NULL)
+	{
+		if (node == *top)
+			return (*top);
+		/* set next to the new top */
+		node->next = (*top);
+		(*top)->prev = node;
+		*top = (*top)->next;
+		node->next->next = NULL;
+		(*top)->prev = NULL;
+		return (*top);
+	}
+	return (rotl_stack(top, node->next));
+}
