@@ -13,7 +13,6 @@ bool print_all(stack_t *node, int i UNUSED)
 		return (false);
 	if ((node->n == 0)
 		|| (node->n < 32 || node->n > 126)
-		|| (node->next == NULL)
 	)
 	{
 		printf("\n");
@@ -21,6 +20,11 @@ bool print_all(stack_t *node, int i UNUSED)
 	}
 
 	printf("%c", node->n);
+	if (node->next == NULL)
+	{
+		printf("\n");
+		return (false);
+	}
 	return (true);
 }
 
