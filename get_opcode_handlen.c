@@ -25,6 +25,7 @@ void (*get_opcode_handler(char *opcode, UI_T line_number))(OPCODE_ARGS)
 		{"pchar", handler_pchar},
 		{"pstr", handler_pstr},
 		{"rotl", handler_rotl},
+		{"rotr", handler_rotr},
 		{NULL, NULL}
 	};
 

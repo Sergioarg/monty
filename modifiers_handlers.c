@@ -59,4 +59,13 @@ void handler_rotl(stack_t **stack, unsigned int line_number UNUSED)
 	rotl_stack(stack, NULL);
 }
 
-
+/**
+ * handler_rotr -  the top two elements of the stack.
+ *
+ * @stack: storage the data.
+ * @UNUSED: current number line of the file reader.
+ */
+void handler_rotr(stack_t **stack, unsigned int line_number UNUSED)
+{
+	rotr_stack(stack, NULL);
+}
