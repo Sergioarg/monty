@@ -1,9 +1,10 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-/* ------ */
-/* MACROS */
-/* ------ */
+/* ┌­­─────────┐ */
+/* │ MACROS  │ */
+/* ­­└─────────┘ */
+
 #define true (1)
 #define false (!true)
 #define DELIMITER_LINE (" \n	")
@@ -26,14 +27,16 @@
 #define ERROR_ZERO "L%u: division by zero\n"
 #define ERROR_PCHARE "L%u: can't pchar, stack empty\n"
 #define ERROR_PCHARR "L%u: can't pchar, value out of range\n"
-/* ----------------- */
-/* DEFINE DATA TYPES */
-/* ----------------- */
+
+/* ┌­­───────────────────┐ */
+/* │ DEFINE DATATYPES  │ */
+/* ­­└───────────────────┘ */
 typedef unsigned char bool;
 
-/* ------------- */
-/* STANDARS LIBS */
-/* ------------- */
+/* ┌­­───────────────┐ */
+/* │ STANDAR LIBS  │ */
+/* ­­└───────────────┘ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -41,9 +44,9 @@ typedef unsigned char bool;
 #include <unistd.h>
 #include "general_methods.h"
 
-/* ---------- */
-/* STRUCTURES */
-/* ---------- */
+/* ┌­­───────────────┐ */
+/* │  STRUCTURES   │ */
+/* ­­└───────────────┘ */
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -70,8 +73,8 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-		char *opcode;
-		void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 /**
@@ -107,9 +110,9 @@ typedef struct global_data
 	bool have_current_data;
 } global_data_t;
 
-/* --------------------- */
-/*     PROTORYPES        */
-/* --------------------- */
+/* ┌­­───────────────┐ */
+/* │  PROTORYPES   │ */
+/* ­­└───────────────┘ */
 void (*get_opcode_handler(
 	char *opcode,
 	unsigned int line_number
@@ -119,9 +122,10 @@ int len(stack_t *node, bool count_null);
 void extract_token_line(char *current_line, char **current_opcode);
 bool is_comment(char *string);
 
-/* -------------------------- */
-/* PROTORYPES OPCODES HANDLER */
-/* -------------------------- */
+/* ┌­­───────────────────────────────┐ */
+/* │  PROTORYPES OPCODES HANDLER   │ */
+/* ­­└───────────────────────────────┘ */
+
 void handler_push(OPCODE_ARGS);
 void handler_nop(stack_t **stack UNUSED, unsigned int line_number UNUSED);
 void handler_pall(OPCODE_ARGS UNUSED);
@@ -138,9 +142,10 @@ void handler_pstr(stack_t **stack, unsigned int line_number UNUSED);
 void handler_rotl(stack_t **stack, unsigned int line_number UNUSED);
 void handler_rotr(stack_t **stack, unsigned int line_number UNUSED);
 
-/* -------------------------- */
-/* PROTOTYPES STACK METHODS   */
-/* -------------------------- */
+/* ┌­­───────────────────────────────┐ */
+/* │  PROTOTYPES STACK METHODS     │ */
+/* ­­└───────────────────────────────┘ */
+
 stack_t *add_stack(stack_t **top);
 void free_storage(stack_t *node);
 stack_t *pop_stack(stack_t **top);
@@ -155,12 +160,10 @@ int stack_empty(stack_t *node);
 stack_t *rotl_stack(stack_t **top, stack_t *node);
 stack_t *rotr_stack(stack_t **top, stack_t *node);
 
+/* ┌­­───────────────────────────────┐ */
+/* │  GLOBAL VARIABLES	    	   │ */
+/* ­­└───────────────────────────────┘ */
 /*map_prototype(stack_t, char);*/
-/* GLOBAL VARIABLES */
-
-/* -------------------------- */
-/*      GLOBAL VARIABLES      */
-/* -------------------------- */
 extern global_data_t global_data;
 
 #endif /*MONTY_H*/
