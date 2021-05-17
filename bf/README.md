@@ -1,18 +1,18 @@
 # BrainF*ck
 <div style="text-align:center" >
-<img src="https://media0.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif?cid=ecf05e47v0d0pdeowd018rwv7kcrvmew7hjxx0sw8ht35pg1&rid=giphy.gif&ct=g" width="100" height="100" /></div>
+<img src="https://media0.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif?cid=ecf05e47v0d0pdeowd018rwv7kcrvmew7hjxx0sw8ht35pg1&rid=giphy.gif&ct=g" width="200" height="200" /></div>
 
 _Exercises in what we use the language BrainFu*k_
 
 ### Install the interpreter
 * Run this command.
 ```
-sudo apt-get install bf
+$ sudo apt-get install bf
 ```
 ### How to use it.
 * First call the interpreter followed by the .bf file
 ```
-bf 1000-holberton.bf
+$ bf 1000-holberton.bf
 
 Output:
 Holberton
