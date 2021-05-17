@@ -97,7 +97,6 @@ stack_t *rotl_stack(stack_t **top, stack_t *node)
 	return (rotl_stack(top, node->next));
 }
 
-
 /**
 * rotr_stack -  the top two elements of the stack.
 *
